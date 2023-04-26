@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./Home";
-import { PlaceholderItemOne } from "./PlaceholderItemOne";
+import { PlaceholderItemOne } from "../Sections/PlaceholderItemOne";
 
 export const Navigation = () => {
   return (
