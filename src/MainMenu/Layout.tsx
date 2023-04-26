@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 
 export const Layout = () => {
   return (
-    <div>
-      <MenuList>
-        <MenuItem>
-          <Link to="/item-one">ItemOne</Link>
-        </MenuItem>
-        <MenuItem>
-          <Link to="/item-two">ItemTwo</Link>
-        </MenuItem>
-      </MenuList>
-    </div>
+    <MenuList>
+      <MenuItem>
+        <Link to="/item-one">ItemOne</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/item-two">ItemTwo</Link>
+      </MenuItem>
+    </MenuList>
   );
 };
