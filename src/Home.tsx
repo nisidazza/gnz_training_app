@@ -12,7 +12,7 @@ const Spacing = styled.span`
   display: block;
 `;
 
-export const Layout = () => {
+export const Home = () => {
   return (
     <MenuList>
       <MenuItem>

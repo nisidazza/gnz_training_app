@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SplashScreen } from "./SplashScreen";
-import { Navigation } from "./MainMenu/Navigation";
+import { Navigation } from "./Navigation";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
