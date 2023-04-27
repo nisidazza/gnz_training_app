@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
 
-export const PlaceholderItemOne = () => {
+export const Placeholder = () => {
   return <Typography>Item One content</Typography>;
 };
