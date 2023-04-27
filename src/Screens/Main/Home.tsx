@@ -1,31 +1,21 @@
-import { MenuItem, MenuList } from "@mui/material";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Button, MenuItem, MenuList } from "@mui/material";
+import mockData from "../../trainingProgramModel.json";
+import { ParentNode } from "../../types";
 
+const dataObj = JSON.parse(JSON.stringify(mockData));
 
-const linkStyle = {
-  textDecoration: "none",
-};
+const { children } = dataObj as ParentNode;
 
-const Spacing = styled.span`
-  height: 20px;
-  display: block;
-`;
+const buttonNames = children.map((obj) => obj.name);
 
 export const Home = () => {
   return (
     <MenuList>
-      <MenuItem>
-        <Link to="/item-one" style={linkStyle}>
-          ItemOne
-        </Link>
-      </MenuItem>
-      <Spacing />
-      <MenuItem>
-        <Link to="/item-two" style={linkStyle}>
-          ItemTwo
-        </Link>
-      </MenuItem>
+      {buttonNames.map((name, i) => (
+        <MenuItem key={i}>
+          <Button>{name}</Button>
+        </MenuItem>
+      ))}
     </MenuList>
   );
 };

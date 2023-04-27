@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SplashScreen } from "./SplashScreen";
-import { Navigation } from "./Screens/Main/Navigation";
 import styled from "styled-components";
+import { Home } from "./Screens/Main/Home";
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,7 +20,5 @@ export const App = () => {
     setTimeout(() => setInitialLoading(false), 4000);
   }, []);
 
-  return (
-    <Wrapper>{initialLoading ? <SplashScreen /> : <Navigation />}</Wrapper>
-  );
+  return <Wrapper>{initialLoading ? <SplashScreen /> : <Home />}</Wrapper>;
 };
