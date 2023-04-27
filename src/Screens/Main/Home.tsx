@@ -10,6 +10,9 @@ const { children } = dataObj as ParentNode;
 
 const buttonNames = children.map((obj) => obj.name);
 
+const getSectionData = (sectionName: string) =>
+  children.filter((obj) => obj.name === sectionName);
+
 export const Home = () => {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
@@ -20,7 +23,7 @@ export const Home = () => {
   return (
     <>
       {openSection ? (
-        <Placeholder />
+        <Placeholder data={getSectionData(openSection)} />
       ) : (
         <MenuList>
           {buttonNames.map((name, i) => (
