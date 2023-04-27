@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { ParentNodeChild } from "../../types";
+import { ParentNode } from "../../types";
 import { MenuList, MenuItem, Button } from "@mui/material";
 
-export const Placeholder: FC<{ data: ParentNodeChild[] }> = ({ data }) => {
+export const Placeholder: FC<{ data: ParentNode[] }> = ({ data }) => {
   const sections = data.flatMap((obj) => obj.children).map((obj) => obj.name);
 
   return (
