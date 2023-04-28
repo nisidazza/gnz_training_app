@@ -17,7 +17,7 @@ export const App = () => {
   const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setInitialLoading(false), 4000);
+    setTimeout(() => setInitialLoading(false), 2000);
   }, []);
 
   return <Wrapper>{initialLoading ? <SplashScreen /> : <Home />}</Wrapper>;
