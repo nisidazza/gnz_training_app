@@ -11,36 +11,41 @@ export const getContentNode = (nodeName: string, node: ContentNode) =>
     .filter((obj) => isContentNode(obj))
     .find((obj) => obj.name === nodeName) as ContentNode;
 
-const getContentLeaf = (leafName: string, leaves: ContentLeaf[]) =>
-  leaves
-    .filter((obj) => !isContentNode(obj))
-    .find((obj) => obj.name === leafName) as ContentLeaf;
+const getContent = (leafName: string, node: ContentNode) => {
+  if (leafName === null)
+    return node
+    
+  const found = node!.children.find((obj) => obj.name === leafName) as
+    | ContentLeaf
+    | ContentNode;
+
+  if (isContentNode(found)) {
+    return found as ContentNode;
+  } else {
+    return found as ContentLeaf;
+  }
+};
 
 export const Home = () => {
-  const [openNodeContent, setOpenNodeContent] = useState<ContentNode>(dataObj);
-  const [leafContent, setLeafContent] = useState<ContentLeaf | null>(null);
+  const [currentContent, setCurrentContent] = useState<
+    ContentLeaf | ContentNode
+  >(dataObj);
 
   const [clickedName, setClickedName] = useState<string | null>(null);
 
-  const contentNode = getContentNode(clickedName!, openNodeContent!);
-  const contentLeaf = getContentLeaf(clickedName!, openNodeContent!.children);
+  const content = getContent(clickedName!, currentContent as ContentNode);
 
   useEffect(() => {
-    if (contentNode) {
-      setOpenNodeContent(contentNode);
-    }
-    if (contentLeaf) {
-      setLeafContent(contentLeaf);
-    }
+    setCurrentContent(content);
     setClickedName(null);
-  }, [clickedName, contentNode, contentLeaf]);
+  }, [clickedName, content]);
 
   return (
     <>
-      {leafContent ? (
-        <Leaf leaf={leafContent} />
+      {!isContentNode(currentContent) ? (
+        <Leaf leaf={currentContent} />
       ) : (
-        <Content data={openNodeContent!} setClickedName={setClickedName} />
+        <Content data={currentContent} setClickedName={setClickedName} />
       )}
     </>
   );
