@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SplashScreen } from "./SplashScreen";
 import styled from "styled-components";
-import { Home } from "./Screens/Main/Home";
+import { Home } from "./Screens/Home";
 
 const Wrapper = styled.div`
   display: flex;

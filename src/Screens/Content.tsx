@@ -1,6 +1,8 @@
 import { FC } from "react";
-import { ContentNode } from "../../types";
+import { ContentNode } from "../types";
 import { MenuList, MenuItem, Button } from "@mui/material";
+
+
 
 export const Content: FC<{
   data: ContentNode;
