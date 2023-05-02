@@ -6,11 +6,6 @@ import { Leaf } from "./Leaf";
 
 const dataObj = JSON.parse(JSON.stringify(mockData));
 
-export const getContentNode = (nodeName: string, node: ContentNode) =>
-  node!.children
-    .filter((obj) => isContentNode(obj))
-    .find((obj) => obj.name === nodeName) as ContentNode;
-
 const getContent = (leafName: string, node: ContentNode) => {
   if (leafName === null)
     return node
