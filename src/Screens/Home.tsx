@@ -1,46 +1,42 @@
+import { useEffect, useState } from "react";
 import mockData from "../trainingProgramModel.json";
 import { ContentLeaf, ContentNode, isContentNode } from "../types";
-import { useEffect, useState } from "react";
+import { Breadcrumbs } from "./Breadcrumb";
 import { Content } from "./Content";
 import { Leaf } from "./Leaf";
 
-const dataObj = JSON.parse(JSON.stringify(mockData));
-
-const getContent = (leafName: string, node: ContentNode) => {
-  if (leafName === null)
-    return node
-    
-  const found = node!.children.find((obj) => obj.name === leafName) as
-    | ContentLeaf
-    | ContentNode;
-
-  if (isContentNode(found)) {
-    return found as ContentNode;
-  } else {
-    return found as ContentLeaf;
+const assignParentRef = (
+  node: ContentNode | ContentLeaf,
+  parentNode?: ContentNode
+) => {
+  node.parent = parentNode;
+  if (isContentNode(node)) {
+    node.children.forEach((child) => assignParentRef(child, node));
   }
 };
+
+const dataObj = JSON.parse(JSON.stringify(mockData)) as ContentNode;
+assignParentRef(dataObj);
 
 export const Home = () => {
   const [currentContent, setCurrentContent] = useState<
     ContentLeaf | ContentNode
   >(dataObj);
 
-  const [clickedName, setClickedName] = useState<string | null>(null);
-
-  const content = getContent(clickedName!, currentContent as ContentNode);
-
   useEffect(() => {
-    setCurrentContent(content);
-    setClickedName(null);
-  }, [clickedName, content]);
+    setCurrentContent(currentContent);
+  }, [currentContent]);
 
   return (
     <>
+      <Breadcrumbs
+        node={currentContent}
+        setCurrentContent={setCurrentContent}
+      />
       {!isContentNode(currentContent) ? (
         <Leaf leaf={currentContent} />
       ) : (
-        <Content data={currentContent} setClickedName={setClickedName} />
+        <Content data={currentContent} setCurrentContent={setCurrentContent} />
       )}
     </>
   );

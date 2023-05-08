@@ -1,21 +1,19 @@
+import { Button, MenuItem, MenuList } from "@mui/material";
 import { FC } from "react";
-import { ContentNode } from "../types";
-import { MenuList, MenuItem, Button } from "@mui/material";
-
-
+import { ContentLeaf, ContentNode } from "../types";
 
 export const Content: FC<{
   data: ContentNode;
-  setClickedName: React.Dispatch<React.SetStateAction<string | null>>;
-}> = ({ data, setClickedName }) => {
-  const nodeNames = data.children.map((obj) => obj.name);
-
+  setCurrentContent: React.Dispatch<
+    React.SetStateAction<ContentNode | ContentLeaf>
+  >;
+}> = ({ data, setCurrentContent }) => {
   return (
     <MenuList>
-      {nodeNames.map((nodeName, i) => (
+      {data.children.map((child, i) => (
         <MenuItem key={i}>
-          <Button variant="outlined" onClick={() => setClickedName(nodeName)}>
-            {nodeName}
+          <Button variant="outlined" onClick={() => setCurrentContent(child)}>
+            {child.name}
           </Button>
         </MenuItem>
       ))}
