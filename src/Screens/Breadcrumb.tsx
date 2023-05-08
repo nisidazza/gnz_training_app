@@ -21,7 +21,7 @@ export const Breadcrumb: FC<{
   const breadcrumbLinks = getBreadcrumbsLinks(node);
 
   return (
-    <Breadcrumbs aria-label="breadcrumb" style={{ justifyContent: "center" }}>
+    <Breadcrumbs aria-label="breadcrumb">
       {breadcrumbLinks.map((link, i) => {
         const isCurrentItem =
           breadcrumbLinks.indexOf(link) === breadcrumbLinks.length - 1;

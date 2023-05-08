@@ -21,9 +21,18 @@ export const theme = createTheme({
         }
       }
     },
+    MuiBreadcrumbs: {
+      styleOverrides: {
+        ol: {
+          justifyContent: 'center'
+        }
+      }
+    },
     MuiMenuItem: {
       styleOverrides: {
         root: {
+          justifyContent: 'center',
+
           '&:hover': {
             backgroundColor: 'transparent',
             border: 'none',
