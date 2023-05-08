@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import mockData from "../trainingProgramModel.json";
 import { ContentLeaf, ContentNode, isContentNode } from "../types";
-import { Breadcrumbs } from "./Breadcrumb";
+import { Breadcrumb } from "./Breadcrumb";
 import { Content } from "./Content";
 import { Leaf } from "./Leaf";
 
@@ -29,10 +29,7 @@ export const Home = () => {
 
   return (
     <>
-      <Breadcrumbs
-        node={currentContent}
-        setCurrentContent={setCurrentContent}
-      />
+      <Breadcrumb node={currentContent} setCurrentContent={setCurrentContent} />
       {!isContentNode(currentContent) ? (
         <Leaf leaf={currentContent} />
       ) : (
