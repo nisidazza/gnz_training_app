@@ -24,7 +24,8 @@ export const theme = createTheme({
     MuiBreadcrumbs: {
       styleOverrides: {
         ol: {
-          justifyContent: 'center'
+          justifyContent: 'center',
+          marginBottom: '20px',
         }
       }
     },
@@ -45,6 +46,13 @@ export const theme = createTheme({
         root: {
           color: "#777",
           textDecoration: 'none',
+        }
+      }
+    },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          marginTop: '20px'
         }
       }
     }
