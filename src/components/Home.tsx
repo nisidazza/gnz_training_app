@@ -16,6 +16,7 @@ export const Home: FC<{
   hashToNode: Dictionary<ContentNode | ContentLeaf>;
 }> = ({ contentTree, hashToNode }) => {
   const [currentHash, setCurrentHash] = useState<number>(contentTree.hash);
+
   const setHashAndHistory = (hash: number) => {
     const state: HistoryState = { hash: hash };
     window.history.pushState(state, "");
@@ -27,9 +28,8 @@ export const Home: FC<{
   }, []);
 
   useEffect(() => {
-    console.log("sta girando");
     window.addEventListener("popstate", (e) => {
-      if (e.state.hash) {
+      if (e.state && e.state.hash) {
         setCurrentHash(e.state.hash);
         e.stopPropagation();
       }
@@ -41,7 +41,7 @@ export const Home: FC<{
   const currentContent = hashToNode[currentHash];
   return (
     <>
-      <SearchBar />
+      <SearchBar contentTree={contentTree}/>
       <Breadcrumb node={currentContent} onClick={setHashAndHistory} />
       {!isContentNode(currentContent) ? (
         <Leaf leaf={currentContent} />
