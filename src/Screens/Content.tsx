@@ -3,12 +3,12 @@ import { FC } from "react";
 import { ContentNode } from "../types";
 
 export const Content: FC<{
-  data: ContentNode;
+  node: ContentNode;
   onClick: (hash: number) => void;
-}> = ({ data, onClick }) => {
+}> = ({ node, onClick }) => {
   return (
     <MenuList>
-      {data.children.map((child, i) => (
+      {node.children.map((child, i) => (
         <MenuItem key={i}>
           <Button variant="outlined" onClick={() => onClick(child.hash)}>
             {child.name}
