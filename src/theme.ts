@@ -13,6 +13,7 @@ export const theme = createTheme({
           backgroundColor: '#57B3DF',
           border: '1px solid #57B3DF',
           color: 'white',
+          width:'100%',
 
           '&:hover': {
             backgroundColor: '#4d92b3',
@@ -52,7 +53,9 @@ export const theme = createTheme({
     MuiList: {
       styleOverrides: {
         root: {
-          marginTop: '20px'
+          marginTop: '20px',
+          width:'100%'
+
         }
       }
     }

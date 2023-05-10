@@ -10,10 +10,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
+  max-width: 1200px;
   height: 100%;
   margin: auto;
-  padding: 1.67rem;
+  padding: 20px 0;
 `;
 
 const getHashCode = (value: string) => {

@@ -1,6 +1,14 @@
-import { Button, MenuItem, MenuList } from "@mui/material";
+import { Button, MenuItem, MenuList, styled } from "@mui/material";
 import { FC } from "react";
 import { ContentNode } from "../types";
+
+const StyledSpan = styled("span")({
+  fontWeight: 600,
+  overflow: "hidden",
+  whiteSpace: "nowrap",
+  textOverflow: "ellipsis",
+  maxWidth: "inherit",
+});
 
 export const Content: FC<{
   node: ContentNode;
@@ -11,7 +19,7 @@ export const Content: FC<{
       {node.children.map((child, i) => (
         <MenuItem key={i}>
           <Button variant="outlined" onClick={() => onClick(child.hash)}>
-            {child.name}
+            <StyledSpan>{child.name}</StyledSpan>
           </Button>
         </MenuItem>
       ))}
