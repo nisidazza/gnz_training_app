@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Home } from "./Screens/Home";
+import { Home } from "./components/Home";
 import { SplashScreen } from "./SplashScreen";
 import mockData from "./trainingProgramModel.json";
 import { ContentLeaf, ContentNode, Dictionary, isContentNode } from "./types";

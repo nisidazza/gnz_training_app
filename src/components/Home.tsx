@@ -9,6 +9,7 @@ import {
 import { Breadcrumb } from "./Breadcrumb";
 import { Content } from "./Content";
 import { Leaf } from "./Leaf";
+import { SearchBar } from "./SearchBar";
 
 export const Home: FC<{
   contentTree: ContentNode;
@@ -40,6 +41,7 @@ export const Home: FC<{
   const currentContent = hashToNode[currentHash];
   return (
     <>
+      <SearchBar />
       <Breadcrumb node={currentContent} onClick={setHashAndHistory} />
       {!isContentNode(currentContent) ? (
         <Leaf leaf={currentContent} />
