@@ -1,18 +1,16 @@
 import { Button, MenuItem, MenuList } from "@mui/material";
 import { FC } from "react";
-import { ContentLeaf, ContentNode } from "../types";
+import { ContentNode } from "../types";
 
 export const Content: FC<{
   data: ContentNode;
-  setCurrentContent: React.Dispatch<
-    React.SetStateAction<ContentNode | ContentLeaf>
-  >;
-}> = ({ data, setCurrentContent }) => {
+  onClick: (hash: number) => void;
+}> = ({ data, onClick }) => {
   return (
     <MenuList>
       {data.children.map((child, i) => (
         <MenuItem key={i}>
-          <Button variant="outlined" onClick={() => setCurrentContent(child)}>
+          <Button variant="outlined" onClick={() => onClick(child.hash)}>
             {child.name}
           </Button>
         </MenuItem>

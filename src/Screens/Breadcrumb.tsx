@@ -1,5 +1,5 @@
 import { Breadcrumbs, Link } from "@mui/material";
-import React, { FC } from "react";
+import { FC } from "react";
 import { ContentLeaf, ContentNode } from "../types";
 
 const getBreadcrumbsLinks = (node?: ContentNode | ContentLeaf) => {
@@ -14,10 +14,8 @@ const getBreadcrumbsLinks = (node?: ContentNode | ContentLeaf) => {
 
 export const Breadcrumb: FC<{
   node: ContentNode | ContentLeaf;
-  setCurrentContent: React.Dispatch<
-    React.SetStateAction<ContentNode | ContentLeaf>
-  >;
-}> = ({ node, setCurrentContent }) => {
+  onClick: (hash: number) => void;
+}> = ({ node, onClick }) => {
   const breadcrumbLinks = getBreadcrumbsLinks(node);
 
   return (
@@ -30,7 +28,7 @@ export const Breadcrumb: FC<{
             underline="hover"
             color={isCurrentItem ? "#555" : "#777"}
             key={i}
-            onClick={() => setCurrentContent(link!)}
+            onClick={() => onClick(link?.hash!)}
             aria-current={isCurrentItem}
           >
             {link?.name}

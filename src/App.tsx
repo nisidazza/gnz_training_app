@@ -19,6 +19,7 @@ export const App = () => {
 
   useEffect(() => {
     setTimeout(() => setInitialLoading(false), 2000);
+    console.log("App");
   }, []);
 
   return <Wrapper>{initialLoading ? <SplashScreen /> : <Home />}</Wrapper>;
