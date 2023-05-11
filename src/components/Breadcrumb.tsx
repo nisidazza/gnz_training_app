@@ -26,7 +26,6 @@ export const Breadcrumb: FC<{
         return (
           <Link
             underline="hover"
-            color={isCurrentItem ? "#4d92b3" : "#777"}
             fontWeight={isCurrentItem ? 700 : 500}
             key={i}
             onClick={() => onClick(link?.hash!)}
