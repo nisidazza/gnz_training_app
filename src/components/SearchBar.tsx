@@ -14,7 +14,7 @@ const filterOptions = createFilterOptions<ContentLeaf>({
   stringify: (option) => option.name,
 });
 
-const getLeafNodeList = (node: ContentNode, list: ContentLeaf[]) => {
+const getLeafNodeList = (node: ContentNode, list: ContentLeaf[] = []) => {
   if (node.children && isContentNode(node)) {
     for (var i = 0; i < node.children.length; i++) {
       getLeafNodeList(node.children[i] as ContentNode, list);
@@ -32,7 +32,7 @@ export const SearchBar: FC<{
   const [inputValue, setInputValue] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<ContentLeaf | null>(null);
 
-  const leaves = getLeafNodeList(contentTree, []);
+  const leaves = getLeafNodeList(contentTree);
 
   const renderOptions = (
     props: React.HTMLAttributes<HTMLElement>,
@@ -41,7 +41,7 @@ export const SearchBar: FC<{
     return (
       <ListItem
         {...props}
-        key={option.hash + (option.parent?.hash.toString() || "N/A")}
+        key={option.hash + (option.parent?.hash.toString() || "no hash")}
       >
         {option.name}
       </ListItem>

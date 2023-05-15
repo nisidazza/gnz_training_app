@@ -21,15 +21,15 @@ export const Breadcrumb: FC<{
   return (
     <Breadcrumbs aria-label="breadcrumb">
       {breadcrumbLinks.map((link, i) => {
-        const isCurrentItem =
-          breadcrumbLinks.indexOf(link) === breadcrumbLinks.length - 1;
         return (
           <Link
             underline="hover"
-            fontWeight={isCurrentItem ? 700 : 500}
+            fontWeight={500}
             key={i}
             onClick={() => onClick(link?.hash!)}
-            aria-current={isCurrentItem}
+            aria-current={
+              breadcrumbLinks.indexOf(link) === breadcrumbLinks.length - 1
+            }
           >
             {link?.name}
           </Link>
