@@ -41,7 +41,7 @@ export const Home: FC<{
   const currentContent = hashToNode[currentHash];
   return (
     <>
-      <SearchBar contentTree={contentTree}/>
+      <SearchBar contentTree={contentTree} setCurrentHash={setCurrentHash} />
       <Breadcrumb node={currentContent} onClick={setHashAndHistory} />
       {!isContentNode(currentContent) ? (
         <Leaf leaf={currentContent} />
