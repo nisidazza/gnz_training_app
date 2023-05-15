@@ -10,7 +10,6 @@ import { FC, useState } from "react";
 import { ContentLeaf, ContentNode, isContentNode } from "../types";
 
 const filterOptions = createFilterOptions<ContentLeaf>({
-  limit: 100,
   stringify: (option) => option.name,
 });
 
@@ -41,7 +40,7 @@ export const SearchBar: FC<{
     return (
       <ListItem
         {...props}
-        key={option.hash + (option.parent?.hash.toString() || "no hash")}
+        key={option.hash + (option.main_html_content || option.name)}
       >
         {option.name}
       </ListItem>
