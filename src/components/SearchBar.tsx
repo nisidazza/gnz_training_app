@@ -53,50 +53,40 @@ export const SearchBar: FC<{
   };
 
   return (
-    <div
-      style={{
-        marginBottom: "30px",
-        width: "100%",
-        height: "100%",
-        zIndex: 1000,
+    <Autocomplete
+      id="node-leaves-search"
+      filterOptions={filterOptions}
+      getOptionLabel={(option) => option.name}
+      inputValue={inputValue}
+      onChange={(e, value, reason) => {
+        if (value && value.hash) {
+          onChange(value);
+        }
       }}
-    >
-      <Autocomplete
-        id="node-leaves-search"
-        clearOnBlur
-        filterOptions={filterOptions}
-        getOptionLabel={(option) => option.name}
-        inputValue={inputValue}
-        onChange={(e, value, reason) => {
-          if (value && value.hash) {
-            onChange(value);
-          }
-        }}
-        onInputChange={(e, value, reason) => {
-          setInputValue(value);
-        }}
-        openOnFocus
-        options={leaves}
-        renderOption={renderOptions}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            id="outlined-search"
-            type="search"
-            InputProps={{
-              ...params.InputProps,
-              placeholder: "Choose an option",
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-          />
-        )}
-        sx={{ width: "100%" }}
-        value={selectedValue}
-      />
-    </div>
+      onInputChange={(e, value, reason) => {
+        setInputValue(value);
+      }}
+      openOnFocus
+      options={leaves}
+      renderOption={renderOptions}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          id="outlined-search"
+          type="search"
+          InputProps={{
+            ...params.InputProps,
+            placeholder: "Search",
+            endAdornment: (
+              <InputAdornment position="end">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+      )}
+      sx={{ width: "100%", marginBottom: "30px" }}
+      value={selectedValue}
+    />
   );
 };

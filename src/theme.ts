@@ -2,6 +2,18 @@ import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   components: {
+    MuiAutocomplete: {
+      styleOverrides: {
+        inputRoot: { paddingRight: 0 },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          paddingRight: "20px !important",
+        },
+      },
+    },
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true,
@@ -10,54 +22,60 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: '#57B3DF',
-          border: '1px solid #57B3DF',
-          color: 'white',
-          width:'100%',
+          backgroundColor: "#57B3DF",
+          border: "1px solid #57B3DF",
+          color: "white",
+          width: "100%",
 
-          '&:hover': {
-            backgroundColor: '#4d92b3',
-            border: '1px solid #4d92b3',
-          }
-        }
-      }
+          "&:hover": {
+            backgroundColor: "#4d92b3",
+            border: "1px solid #4d92b3",
+          },
+        },
+      },
     },
     MuiBreadcrumbs: {
       styleOverrides: {
+        root: { padding: "0 16px" },
         ol: {
-          justifyContent: 'center',
-          marginBottom: '20px',
-        }
-      }
+          marginBottom: "20px",
+        },
+      },
+    },
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "white",
+        },
+      },
     },
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          justifyContent: 'center',
+          justifyContent: "center",
 
-          '&:hover': {
-            backgroundColor: 'transparent',
-            border: 'none',
-          }
-        }
-      }
+          "&:hover": {
+            backgroundColor: "transparent",
+            border: "none",
+          },
+        },
+      },
     },
     MuiLink: {
       styleOverrides: {
         root: {
           color: "#777",
-          textDecoration: 'none',
-        }
-      }
+          textDecoration: "none",
+        },
+      },
     },
     MuiList: {
       styleOverrides: {
         root: {
-          marginTop: '20px',
-          width:'100%'
-
-        }
-      }
-    }
+          marginTop: "20px",
+          width: "100%",
+        },
+      },
+    },
   },
 });

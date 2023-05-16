@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Home } from "./components/Home";
 import { SplashScreen } from "./SplashScreen";
+import { Home } from "./components/Home";
 import mockData from "./trainingProgramModel.json";
 import { ContentLeaf, ContentNode, Dictionary, isContentNode } from "./types";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  max-width: 1200px;
-  height: 100%;
+  min-height: 100vh;
   margin: auto;
-  padding: 20px 0;
+  padding: 20px 10px;
+  background-color: rgb(228 228 228);
 `;
 
 const getHashCode = (value: string) => {

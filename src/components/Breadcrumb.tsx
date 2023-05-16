@@ -24,7 +24,7 @@ export const Breadcrumb: FC<{
         return (
           <Link
             underline="hover"
-            fontWeight={500}
+            fontWeight={600}
             key={i}
             onClick={() => onClick(link?.hash!)}
             aria-current={
