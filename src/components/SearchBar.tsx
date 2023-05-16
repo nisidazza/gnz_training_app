@@ -29,7 +29,6 @@ export const SearchBar: FC<{
   setCurrentHash: React.Dispatch<React.SetStateAction<number>>;
 }> = ({ contentTree, setCurrentHash }) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const [selectedValue, setSelectedValue] = useState<ContentLeaf | null>(null);
 
   const leaves = getLeafNodeList(contentTree);
 
@@ -47,11 +46,6 @@ export const SearchBar: FC<{
     );
   };
 
-  const onChange = (selectedValue: ContentLeaf) => {
-    setSelectedValue(selectedValue);
-    setCurrentHash(selectedValue.hash);
-  };
-
   return (
     <Autocomplete
       id="node-leaves-search"
@@ -59,14 +53,15 @@ export const SearchBar: FC<{
       getOptionLabel={(option) => option.name}
       inputValue={inputValue}
       onChange={(e, value, reason) => {
-        if (value && value.hash) {
-          onChange(value);
+        if (value && value.hash && reason === "selectOption") {
+          setCurrentHash(value.hash);
+          setInputValue("");
         }
       }}
       onInputChange={(e, value, reason) => {
         setInputValue(value);
       }}
-      openOnFocus
+      blurOnSelect={true}
       options={leaves}
       renderOption={renderOptions}
       renderInput={(params) => (
@@ -86,7 +81,7 @@ export const SearchBar: FC<{
         />
       )}
       sx={{ width: "100%", marginBottom: "30px" }}
-      value={selectedValue}
+      value={null}
     />
   );
 };
