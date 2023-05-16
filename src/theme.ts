@@ -5,12 +5,13 @@ export const theme = createTheme({
     MuiAutocomplete: {
       styleOverrides: {
         inputRoot: { paddingRight: 0 },
+        root: { padding: 0 },
       },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          paddingRight: "20px !important",
+          padding: "0 !important",
         },
       },
     },
@@ -38,7 +39,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: { padding: "0 16px" },
         ol: {
-          marginBottom: "20px",
+          marginBottom: "5px",
         },
       },
     },
@@ -72,7 +73,8 @@ export const theme = createTheme({
     MuiList: {
       styleOverrides: {
         root: {
-          marginTop: "20px",
+          marginTop: "5px",
+          padding: "4px 0",
           width: "100%",
         },
       },

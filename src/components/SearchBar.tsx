@@ -80,7 +80,7 @@ export const SearchBar: FC<{
           }}
         />
       )}
-      sx={{ width: "100%", marginBottom: "30px" }}
+      sx={{ width: "100%", marginBottom: "10px" }}
       value={null}
     />
   );

@@ -2,6 +2,7 @@ import { Breadcrumbs, Link } from "@mui/material";
 import { FC } from "react";
 import { ContentLeaf, ContentNode } from "../types";
 
+
 const getBreadcrumbsLinks = (node?: ContentNode | ContentLeaf) => {
   const breadcrumbLinks = [];
   do {
@@ -19,12 +20,12 @@ export const Breadcrumb: FC<{
   const breadcrumbLinks = getBreadcrumbsLinks(node);
 
   return (
-    <Breadcrumbs aria-label="breadcrumb">
+    <Breadcrumbs aria-label="breadcrumb" maxItems={2}>
       {breadcrumbLinks.map((link, i) => {
         return (
           <Link
             underline="hover"
-            fontWeight={600}
+            fontWeight={500}
             key={i}
             onClick={() => onClick(link?.hash!)}
             aria-current={

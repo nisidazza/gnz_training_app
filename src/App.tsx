@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { SplashScreen } from "./SplashScreen";
 import { Home } from "./components/Home";
-import mockData from "./trainingProgramModel.json";
+import mockData from "./trainingProgramModel_v2.json";
 import { ContentLeaf, ContentNode, Dictionary, isContentNode } from "./types";
 
 const Wrapper = styled.div`
